@@ -1,49 +1,94 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fdfbf7;
+  color: #3b2a21;
+  text-align: center;
 }
 
 header {
-    background-color: #008080; /* Teal/Blue color often associated with tech/freshness */
-    color: white;
-    padding: 30px 0;
+  background-color: transparent;
+  color: #3b2a21;
+  padding: 30px 0;
 }
 
 main {
-    padding: 20px;
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 32px;
+  max-width: 860px;
+  margin: 24px auto;
+  background-color: rgba(253, 251, 247, 0.96);
+  border: 1px solid rgba(59, 42, 33, 0.12);
+  border-radius: 24px;
+  box-shadow: 0 28px 60px rgba(59, 42, 33, 0.08);
 }
 
-.whatsapp-button {
-    background-color: #25D366; /* Official WhatsApp Green */
-    color: white;
-    padding: 15px 30px;
-    margin: 20px 0;
-    border: none;
-    border-radius: 50px;
-    font-size: 1.2em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
+button,
+.whatsapp-button,
+.cta-button {
+  background-color: #b08b4f;
+  color: #fdfbf7;
+  padding: 14px 32px;
+  margin: 20px 0;
+  border: 1px solid rgba(176, 139, 79, 0.8);
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
-.whatsapp-button:hover {
-    background-color: #128C7E; /* Darker Green on hover */
+button:hover,
+.whatsapp-button:hover,
+.cta-button:hover {
+  background-color: #a47b44;
+  transform: translateY(-1px);
+  box-shadow: 0 18px 35px rgba(59, 42, 33, 0.12);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #3b2a21;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+p,
+label,
+li {
+  color: #4b3621;
+}
+
+input,
+textarea {
+  background-color: #f7f1e9;
+  border: 1px solid rgba(59, 42, 33, 0.16);
+  border-radius: 12px;
+  color: #3b2a21;
+  padding: 14px 16px;
+  width: 100%;
+  font-size: 1rem;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: rgba(176, 139, 79, 0.9);
+  box-shadow: 0 0 0 4px rgba(176, 139, 79, 0.12);
 }
 
 ul {
-    list-style: none;
-    padding: 0;
+  list-style: none;
+  padding: 0;
 }
 
 ul li {
-    padding: 5px 0;
+  padding: 5px 0;
 }

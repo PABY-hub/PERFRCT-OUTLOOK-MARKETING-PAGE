@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Perfect-Outlook | Fashion Design</title>
+    <title>Perfect Outlook | Shop</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -74,7 +74,6 @@
       }
 
       .color-option:checked + label {
-        /* Replace Tailwind `ring-*` utilities with a visible focus ring using box-shadow */
         box-shadow:
           0 0 0 3px rgba(26, 26, 26, 0.15),
           0 0 0 1px var(--primary);
@@ -119,7 +118,6 @@
         margin-bottom: 1.5rem;
       }
 
-      /* Custom scrollbar */
       ::-webkit-scrollbar {
         width: 8px;
       }
@@ -151,10 +149,9 @@
         }
       }
     </style>
-    <base target="_blank" />
+    <base target="_self" />
   </head>
   <body class="antialiased text-gray-900">
-    <!-- Navigation -->
     <nav
       class="fixed w-full z-50 nav-blur border-b border-gray-100 transition-all duration-300"
       id="navbar"
@@ -163,10 +160,9 @@
         <div class="flex justify-between items-center h-20">
           <div class="flex-shrink-0 flex items-center">
             <h1 class="font-display text-3xl font-bold tracking-tighter">
-              PERFECT-OUTLOOK.
+              PERFECT OUTLOOK.
             </h1>
           </div>
-
           <div class="hidden md:flex space-x-8">
             <a
               href="#collections"
@@ -188,13 +184,7 @@
               class="text-sm font-medium hover:text-yellow-600 transition-colors"
               >Contact</a
             >
-            <a
-              href="admin.html"
-              class="text-sm font-medium hover:text-yellow-600 transition-colors"
-              >Admin</a
-            >
           </div>
-
           <div class="flex items-center space-x-4">
             <button
               onclick="toggleCart()"
@@ -213,8 +203,6 @@
           </div>
         </div>
       </div>
-
-      <!-- Mobile Menu -->
       <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
         <div class="px-4 pt-2 pb-6 space-y-1">
           <a
@@ -241,7 +229,6 @@
       </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="relative pt-20 min-h-screen flex items-center hero-pattern">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -264,16 +251,14 @@
               <a
                 href="#collections"
                 class="bg-black text-white px-8 py-4 rounded-none hover:bg-gray-800 transition-all duration-300 font-medium"
+                >Explore Collection</a
               >
-                Explore Collection
-              </a>
               <a
                 href="https://wa.me/233536654653?text=Hi! I'm interested in a custom design consultation."
                 target="_blank"
                 class="whatsapp-btn text-white px-8 py-4 rounded-none font-medium flex items-center gap-2"
               >
-                <i class="fab fa-whatsapp text-xl"></i>
-                Chat on WhatsApp
+                <i class="fab fa-whatsapp text-xl"></i> Chat on WhatsApp
               </a>
             </div>
           </div>
@@ -299,7 +284,6 @@
       </div>
     </section>
 
-    <!-- Featured Pinned Items Section (dynamically loaded) -->
     <section id="pinned-section" class="py-12 bg-gray-50" style="display: none">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-6">
@@ -313,13 +297,10 @@
         <div
           id="pinned-items-grid"
           class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          <!-- Pinned items injected via JS -->
-        </div>
+        ></div>
       </div>
     </section>
 
-    <!-- Collections Section -->
     <section id="collections" class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 scroll-reveal">
@@ -330,8 +311,6 @@
             Discover our latest creations, each designed to celebrate
             individuality and refined taste.
           </p>
-
-          <!-- Filter Buttons -->
           <div class="flex flex-wrap justify-center gap-4 mt-8">
             <button
               onclick="filterProducts('all')"
@@ -359,33 +338,22 @@
             </button>
           </div>
         </div>
-
-        <!-- Product Grid -->
-        <div id="product-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Products injected via JavaScript -->
-        </div>
+        <div
+          id="product-grid"
+          class="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+        ></div>
       </div>
     </section>
 
-    <!-- Product Modal -->
-    <div
-      id="product-modal"
-      class="fixed inset-0 z-50 hidden overflow-y-auto"
-      aria-labelledby="modal-title"
-      role="dialog"
-      aria-modal="true"
-    >
+    <div id="product-modal" class="fixed inset-0 z-50 hidden overflow-y-auto">
       <div
         class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
       >
         <div
           class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
-          aria-hidden="true"
           onclick="closeModal()"
         ></div>
-        <span
-          class="hidden sm:inline-block sm:align-middle sm:h-screen"
-          aria-hidden="true"
+        <span class="hidden sm:inline-block sm:align-middle sm:h-screen"
           >&#8203;</span
         >
         <div
@@ -407,7 +375,6 @@
               >
                 <i class="fas fa-times text-2xl"></i>
               </button>
-
               <p
                 id="modal-category"
                 class="text-yellow-600 text-sm font-medium tracking-widest mb-2"
@@ -421,35 +388,24 @@
                 id="modal-description"
                 class="text-gray-600 mb-8 leading-relaxed"
               ></p>
-
-              <!-- Size Selection -->
               <div class="mb-6">
                 <label class="block text-sm font-medium mb-3"
                   >Select Size</label
                 >
-                <div class="flex flex-wrap gap-3" id="modal-sizes">
-                  <!-- Sizes injected via JS -->
-                </div>
+                <div class="flex flex-wrap gap-3" id="modal-sizes"></div>
               </div>
-
-              <!-- Color Selection -->
               <div class="mb-8">
                 <label class="block text-sm font-medium mb-3"
                   >Select Color</label
                 >
-                <div class="flex flex-wrap gap-3" id="modal-colors">
-                  <!-- Colors injected via JS -->
-                </div>
+                <div class="flex flex-wrap gap-3" id="modal-colors"></div>
               </div>
-
               <button
                 onclick="orderViaWhatsApp()"
                 class="whatsapp-btn w-full text-white py-4 font-medium flex items-center justify-center gap-2 hover:opacity-90 transition-opacity"
               >
-                <i class="fab fa-whatsapp text-xl"></i>
-                Order via WhatsApp
+                <i class="fab fa-whatsapp text-xl"></i> Order via WhatsApp
               </button>
-
               <p class="text-xs text-gray-500 mt-4 text-center">
                 You'll be redirected to WhatsApp with pre-filled order details
               </p>
@@ -459,7 +415,6 @@
       </div>
     </div>
 
-    <!-- About Section -->
     <section id="about" class="py-20 bg-gray-50">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -520,7 +475,6 @@
       </div>
     </section>
 
-    <!-- Lookbook Section -->
     <section id="lookbook" class="py-20 bg-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16 scroll-reveal">
@@ -531,14 +485,10 @@
             Visual stories from our latest runway and editorial shoots.
           </p>
         </div>
-
-        <div class="gallery-masonry" id="lookbook-grid">
-          <!-- Lookbook items injected via JS -->
-        </div>
+        <div class="gallery-masonry" id="lookbook-grid"></div>
       </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="py-20 bg-black text-white">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16">
@@ -554,7 +504,6 @@
               collections? Reach out directly via WhatsApp for the fastest
               response.
             </p>
-
             <div class="space-y-6">
               <div class="flex items-center gap-4">
                 <div
@@ -564,7 +513,18 @@
                 </div>
                 <div>
                   <p class="text-sm text-gray-400">WhatsApp</p>
-                  <p class="font-medium">+233 536 654 653</p>
+                  <p class="font-medium">0536654653</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4">
+                <div
+                  class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center"
+                >
+                  <i class="fas fa-envelope text-yellow-600 text-xl"></i>
+                </div>
+                <div>
+                  <p class="text-sm text-gray-400">Email</p>
+                  <p class="font-medium">kingpisky45@gmail.com</p>
                 </div>
               </div>
               <div class="flex items-center gap-4">
@@ -580,14 +540,20 @@
               </div>
             </div>
           </div>
-
           <div class="scroll-reveal bg-gray-900 p-8 md:p-12">
             <form onsubmit="handleContactSubmit(event)" class="space-y-6">
               <div>
                 <label class="block text-sm font-medium mb-2">Name</label>
                 <input
                   type="text"
-                  name="name"
+                  required
+                  class="w-full bg-gray-800 border border-gray-700 rounded-none px-4 py-3 text-white focus:outline-none focus:border-yellow-600 transition-colors"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium mb-2">Email</label>
+                <input
+                  type="email"
                   required
                   class="w-full bg-gray-800 border border-gray-700 rounded-none px-4 py-3 text-white focus:outline-none focus:border-yellow-600 transition-colors"
                 />
@@ -595,35 +561,29 @@
               <div>
                 <label class="block text-sm font-medium mb-2">Message</label>
                 <textarea
-                  name="message"
                   rows="4"
                   required
                   class="w-full bg-gray-800 border border-gray-700 rounded-none px-4 py-3 text-white focus:outline-none focus:border-yellow-600 transition-colors"
-                  placeholder="Tell us about your inquiry..."
                 ></textarea>
               </div>
               <button
                 type="submit"
                 class="w-full bg-yellow-600 text-black py-4 font-medium hover:bg-yellow-500 transition-colors"
               >
-                Send via WhatsApp
+                Send Message
               </button>
             </form>
-            <p class="text-xs text-gray-500 mt-4 text-center">
-              You'll be redirected to WhatsApp with your message
-            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-gray-950 text-white py-12 border-t border-gray-900">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-4 gap-8 mb-8">
           <div class="col-span-2">
             <h3 class="font-display text-2xl font-bold mb-4">
-              PERFECT-OUT LOOK.
+              PERFECTOUT LOOK.
             </h3>
             <p class="text-gray-400 max-w-sm">
               Creating timeless fashion pieces that celebrate individuality and
@@ -685,7 +645,7 @@
           class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center"
         >
           <p class="text-gray-500 text-sm">
-            &copy; 2024 Perfect-out look. All rights reserved.
+            &copy; 2024 Perfectout look. All rights reserved.
           </p>
           <div class="flex space-x-6 mt-4 md:mt-0 text-sm text-gray-500">
             <a href="#" class="hover:text-white">Privacy Policy</a>
@@ -695,7 +655,6 @@
       </div>
     </footer>
 
-    <!-- Floating WhatsApp Button -->
     <a
       href="https://wa.me/233536654653?text=Hi! I'm interested in your fashion collection."
       target="_blank"
@@ -709,55 +668,35 @@
     </a>
 
     <script>
-      // Product Data — start with empty array; products are loaded from admin page via localStorage
       const products = [];
 
-      // Load products from localStorage (admin_products)
       function reloadAdminProducts() {
         try {
-          console.debug("reloadAdminProducts() running");
           const admin = JSON.parse(
             localStorage.getItem("admin_products") || "[]",
           );
-          console.debug(
-            "admin items found from localStorage:",
-            Array.isArray(admin) ? admin.length : 0,
-          );
-          // Clear products array and populate from localStorage only
           products.length = 0;
           if (Array.isArray(admin) && admin.length > 0) {
             admin.forEach((p, i) => {
               const id = i + 1;
               products.push(Object.assign({ id }, p));
             });
-            console.debug("products array now has", products.length, "items");
-          } else {
-            console.debug("No admin products in localStorage");
           }
         } catch (e) {
           console.warn("Failed to reload admin products", e);
         }
       }
 
-      // Load admin products on page load
       reloadAdminProducts();
 
-      // Listen for storage changes and reload
       window.addEventListener("storage", function (e) {
-        console.debug("storage event fired", { key: e.key });
         reloadAdminProducts();
         renderPinnedItems();
-        reloadLookbookImages();
-        renderLookbook();
-        // re-render if DOM is ready
         try {
           renderProducts("all");
-        } catch (err) {
-          console.debug("renderProducts not ready yet");
-        }
+        } catch (err) {}
       });
 
-      // Load and render pinned items from localStorage
       function renderPinnedItems() {
         try {
           const pinned = JSON.parse(
@@ -803,7 +742,7 @@
           if (!item) return;
           const message = `Hi! I'm interested in this pinned item from Pinterest:\n\n*${item.name || "Pinterest Pin"}*\nPrice: ₵${item.price || 0}\nLink: ${item.url || "#"}\n\nPlease confirm availability.`;
           window.open(
-            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+            `https://wa.me/233536654653?text=${encodeURIComponent(message)}`,
             "_blank",
           );
         } catch (e) {
@@ -811,78 +750,51 @@
         }
       }
 
-      let lookbookImages = [
-        { src: "icons/download (4).jpg", caption: "" },
-        { src: "icons/download (5).jpg", caption: "" },
-        { src: "icons/Modern Leisure Tank Top Pants Set.jpg", caption: "" },
-        { src: "icons/wrap dress.jpg", caption: "" },
-        { src: "icons/beautiful.jpg", caption: "" },
-        { src: "icons/coofandy_shop.jpg", caption: "" },
+      const lookbookImages = [
+        "icons/download (4).jpg",
+        "icons/download (5).jpg",
+        "icons/Modern Leisure Tank Top Pants Set.jpg",
+        "icons/wrap dress.jpg",
+        "icons/beautiful.jpg",
+        "icons/coofandy_shop.jpg",
       ];
-
-      function reloadLookbookImages() {
-        try {
-          const stored = JSON.parse(
-            localStorage.getItem("admin_lookbook") || "[]",
-          );
-          if (Array.isArray(stored) && stored.length > 0) {
-            lookbookImages = stored
-              .map((item) => ({
-                src: item.src || item.image || item.url || "",
-                caption: item.caption || "",
-              }))
-              .filter((item) => item.src);
-          }
-        } catch (e) {
-          console.warn("Failed to load lookbook images", e);
-        }
-      }
-
-      const whatsappNumber = "233536654653";
       let currentProduct = null;
       let selectedSize = null;
       let selectedColor = null;
       let cart = [];
 
-      // Initialize
       document.addEventListener("DOMContentLoaded", () => {
         renderProducts("all");
         renderPinnedItems();
-        reloadLookbookImages();
         renderLookbook();
         setupScrollReveal();
         setupNavbar();
       });
 
-      // Render Products
       function renderProducts(filter) {
         const grid = document.getElementById("product-grid");
         const filtered =
           filter === "all"
             ? products
             : products.filter((p) => p.category === filter);
-
         grid.innerHTML = filtered
           .map(
             (product) => `
-                <div class="product-card group cursor-pointer scroll-reveal" onclick="openModal(${product.id})">
-                    <div class="relative overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
-                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                        <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center">
-                            <button class="bg-white text-black px-6 py-3 font-medium hover:bg-yellow-600 hover:text-white transition-colors">
-                                Quick View
-                            </button>
-                        </div>
-                    </div>
-                    <h3 class="font-display text-xl font-semibold mb-2">${product.name}</h3>
-                    <p class="text-gray-600">${product.price}</p>
-                    <span class="text-xs text-gray-400 uppercase tracking-wider">${product.category}</span>
-                </div>
-            `,
+          <div class="product-card group cursor-pointer scroll-reveal" onclick="openModal(${product.id})">
+            <div class="relative overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
+              <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center">
+                <button class="bg-white text-black px-6 py-3 font-medium hover:bg-yellow-600 hover:text-white transition-colors">Quick View</button>
+              </div>
+            </div>
+            <h3 class="font-display text-xl font-semibold mb-2">${product.name}</h3>
+            <p class="text-gray-600">₵${product.price}</p>
+            <span class="text-xs text-gray-400 uppercase tracking-wider">${product.category}</span>
+          </div>
+        `,
           )
           .join("");
 
-        // Update active filter button
         document.querySelectorAll(".filter-btn").forEach((btn) => {
           btn.classList.remove(
             "active",
@@ -912,28 +824,22 @@
         renderProducts(category);
       }
 
-      // Render Lookbook
       function renderLookbook() {
         const grid = document.getElementById("lookbook-grid");
         grid.innerHTML = lookbookImages
           .map(
-            (item, idx) => `
-                <div class="gallery-item scroll-reveal overflow-hidden group">
-                    <img src="${item.src}" alt="Lookbook ${idx + 1}" 
-                         class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
-                         onclick="openLightbox('${item.src}')">
-                    ${item.caption ? `<p class="text-sm text-gray-600 mt-3">${item.caption}</p>` : ""}
-                </div>
-            `,
+            (img, idx) => `
+          <div class="gallery-item scroll-reveal overflow-hidden group">
+            <img src="${img}" alt="Lookbook ${idx + 1}" class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer" onclick="openLightbox('${img}')">
+          </div>
+        `,
           )
           .join("");
       }
 
-      // Modal Functions
       function openModal(productId) {
         currentProduct = products.find((p) => p.id === productId);
         if (!currentProduct) return;
-
         document.getElementById("modal-image").src = currentProduct.image;
         document.getElementById("modal-category").textContent =
           currentProduct.category;
@@ -943,28 +849,23 @@
           `₵${currentProduct.price}`;
         document.getElementById("modal-description").textContent =
           currentProduct.description;
-
-        // Render sizes
         document.getElementById("modal-sizes").innerHTML = currentProduct.sizes
           .map(
             (size, idx) => `
-                <input type="radio" name="size" id="size-${idx}" value="${size}" class="hidden size-option" onchange="selectedSize = '${size}'">
-                <label for="size-${idx}" class="w-12 h-12 border border-gray-300 flex items-center justify-center cursor-pointer hover:border-black transition-colors text-sm font-medium">${size}</label>
-            `,
+          <input type="radio" name="size" id="size-${idx}" value="${size}" class="hidden size-option" onchange="selectedSize = '${size}'">
+          <label for="size-${idx}" class="w-12 h-12 border border-gray-300 flex items-center justify-center cursor-pointer hover:border-black transition-colors text-sm font-medium">${size}</label>
+        `,
           )
           .join("");
-
-        // Render colors
         document.getElementById("modal-colors").innerHTML =
           currentProduct.colors
             .map(
               (color, idx) => `
-                <input type="radio" name="color" id="color-${idx}" value="${color}" class="hidden color-option" onchange="selectedColor = '${color}'">
-                <label for="color-${idx}" class="w-8 h-8 rounded-full cursor-pointer ring-2 ring-offset-2 ring-transparent hover:ring-gray-400 transition-all" style="background-color: ${color}"></label>
-            `,
+          <input type="radio" name="color" id="color-${idx}" value="${color}" class="hidden color-option" onchange="selectedColor = '${color}'">
+          <label for="color-${idx}" class="w-8 h-8 rounded-full cursor-pointer ring-2 ring-offset-2 ring-transparent hover:ring-gray-400 transition-all" style="background-color: ${color}"></label>
+        `,
             )
             .join("");
-
         document.getElementById("product-modal").classList.remove("hidden");
         document.body.style.overflow = "hidden";
       }
@@ -977,25 +878,17 @@
         selectedColor = null;
       }
 
-      // WhatsApp Integration
       function orderViaWhatsApp() {
         if (!selectedSize || !selectedColor) {
           alert("Please select a size and color first.");
           return;
         }
-
         const colorName = getColorName(selectedColor);
         const message = `Hi! I'm interested in ordering:\n\n*${currentProduct.name}*\nPrice: ₵${currentProduct.price}\nSize: ${selectedSize}\nColor: ${colorName}\nCategory: ${currentProduct.category}\n\nPlease confirm availability. Thank you!`;
-
-        if (!currentProduct) {
-          alert("No product selected. Please open a product first.");
-          return;
-        }
-
-        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-        window.open(whatsappUrl, "_blank");
-
-        // Add to cart tracking
+        window.open(
+          `https://wa.me/233536654653?text=${encodeURIComponent(message)}`,
+          "_blank",
+        );
         cart.push({
           ...currentProduct,
           size: selectedSize,
@@ -1027,7 +920,6 @@
         return colors[hex] || "Custom";
       }
 
-      // Cart Functions
       function updateCartCount() {
         const count = document.getElementById("cart-count");
         if (cart.length > 0) {
@@ -1048,17 +940,15 @@
           cartSummary += `${idx + 1}. ${item.name} - ${item.size} - ${getColorName(item.color)} - ₵${item.price}\n`;
         });
         cartSummary += `\nTotal: ₵${cart.reduce((sum, item) => sum + item.price, 0)}`;
-
         if (confirm(cartSummary + "\n\nProceed to order all via WhatsApp?")) {
           const message = `Hi! I'd like to order the following items:\n\n${cartSummary}\n\nPlease confirm availability. Thank you!`;
           window.open(
-            `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`,
+            `https://wa.me/233536654653?text=${encodeURIComponent(message)}`,
             "_blank",
           );
         }
       }
 
-      // Utility Functions
       function toggleMobileMenu() {
         const menu = document.getElementById("mobile-menu");
         menu.classList.toggle("hidden");
@@ -1075,59 +965,45 @@
           },
           { threshold: 0.1 },
         );
-
         document
           .querySelectorAll(".scroll-reveal")
           .forEach((el) => observer.observe(el));
       }
 
       function setupNavbar() {
-        let lastScroll = 0;
         window.addEventListener("scroll", () => {
           const currentScroll = window.pageYOffset;
           const navbar = document.getElementById("navbar");
-
           if (currentScroll > 100) {
             navbar.classList.add("shadow-md");
           } else {
             navbar.classList.remove("shadow-md");
           }
-          lastScroll = currentScroll;
         });
       }
 
       function handleContactSubmit(e) {
         e.preventDefault();
-        const formData = new FormData(e.target);
-        const name = formData.get("name");
-        const message = formData.get("message");
-
-        const whatsappMessage = `Hi! My name is ${name}.\n\n${message}`;
-        const whatsappUrl = `https://wa.me/233536654653?text=${encodeURIComponent(whatsappMessage)}`;
-
-        window.open(whatsappUrl, "_blank");
-        alert("Opening WhatsApp with your message...");
+        alert("Thank you for your message! We will get back to you soon.");
         e.target.reset();
       }
 
       function openLightbox(imgSrc) {
-        // Simple lightbox implementation
         const lightbox = document.createElement("div");
         lightbox.className =
           "fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4";
         lightbox.innerHTML = `
-                <img src="${imgSrc}" class="max-w-full max-h-full object-contain">
-                <button onclick="this.parentElement.remove()" class="absolute top-4 right-4 text-white text-2xl">
-                    <i class="fas fa-times"></i>
-                </button>
-            `;
+          <img src="${imgSrc}" class="max-w-full max-h-full object-contain">
+          <button onclick="this.parentElement.remove()" class="absolute top-4 right-4 text-white text-2xl">
+            <i class="fas fa-times"></i>
+          </button>
+        `;
         lightbox.onclick = (e) => {
           if (e.target === lightbox) lightbox.remove();
         };
         document.body.appendChild(lightbox);
       }
 
-      // Close modal on escape key
       document.addEventListener("keydown", (e) => {
         if (e.key === "Escape") closeModal();
       });
