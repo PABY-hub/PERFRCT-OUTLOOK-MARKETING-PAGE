@@ -188,6 +188,11 @@
               class="text-sm font-medium hover:text-yellow-600 transition-colors"
               >Contact</a
             >
+            <a
+              href="admin.html"
+              class="text-sm font-medium hover:text-yellow-600 transition-colors"
+              >Admin</a
+            >
           </div>
 
           <div class="flex items-center space-x-4">
@@ -742,93 +747,50 @@
     </a>
 
     <script>
-      // Product Data
-      const products = [
-        {
-          id: 1,
-          name: "Midnight Silk Gown",
-          price: 1250,
-          category: "dresses",
-          image: "icons/download (4).jpg",
-          description:
-            "A flowing silk gown with delicate hand-beaded details. Perfect for evening galas and special occasions. Features a draped back and side slit.",
-          sizes: ["XS", "S", "M", "L", "XL"],
-          colors: ["#000000", "#1a1a2e", "#16213e"],
-        },
-        {
-          id: 2,
-          name: "Tailored Linen Suit",
-          price: 890,
-          category: "suits",
-          image: "icons/download (5).jpg",
-          description:
-            "Italian linen suit with structured shoulders and tapered trousers. Breathable fabric perfect for summer events.",
-          sizes: ["44", "46", "48", "50", "52"],
-          colors: ["#f5f5dc", "#d4c4b0", "#8b7355"],
-        },
-        {
-          id: 3,
-          name: "Velvet Evening Clutch",
-          price: 320,
-          category: "accessories",
-          image: "icons/Modern Leisure Tank Top Pants Set.jpg",
-          description:
-            "Hand-embroidered velvet clutch with gold hardware. Includes detachable chain strap.",
-          sizes: ["One Size"],
-          colors: ["#800020", "#000080", "#2f4f4f"],
-        },
-        {
-          id: 4,
-          name: "A-Line Tulle Dress",
-          price: 780,
-          category: "dresses",
-          image: "icons/wrap dress.jpg",
-          description:
-            "Romantic tulle dress with layered skirt and corset bodice. Available in custom colors upon request.",
-          sizes: ["XS", "S", "M", "L"],
-          colors: ["#ffc0cb", "#ffffff", "#e6e6fa"],
-        },
-        {
-          id: 5,
-          name: "Cashmere Overcoat",
-          price: 1450,
-          category: "suits",
-          image: "icons beautiful.jpg",
-          description:
-            "Luxurious cashmere overcoat with belted waist and wide lapels. Knee-length with hidden pockets.",
-          sizes: ["S", "M", "L", "XL"],
-          colors: ["#d2b48c", "#808080", "#2f4f4f"],
-        },
-        {
-          id: 6,
-          name: "Silk Scarf Collection",
-          price: 180,
-          category: "accessories",
-          image: "icons/coofandy_shop.jpg",
-          description:
-            "Hand-printed silk scarves featuring original artwork. 90x90cm, perfect for neck or bag accessory.",
-          sizes: ["One Size"],
-          colors: ["#ff6b6b", "#4ecdc4", "#ffe66d"],
-        },
-      ];
+      // Product Data — start with empty array; products are loaded from admin page via localStorage
+      const products = [];
 
-      // Merge admin-added products from localStorage (if any)
-      (function loadAdminProducts() {
+      // Load products from localStorage (admin_products)
+      function reloadAdminProducts() {
         try {
+          console.debug("reloadAdminProducts() running");
           const admin = JSON.parse(
             localStorage.getItem("admin_products") || "[]",
           );
-          if (!Array.isArray(admin) || admin.length === 0) return;
-          // assign incremental ids that don't collide with existing ones
-          const maxId = products.reduce((m, p) => Math.max(m, p.id || 0), 0);
-          admin.forEach((p, i) => {
-            const id = maxId + i + 1;
-            products.push(Object.assign({ id }, p));
-          });
+          console.debug(
+            "admin items found from localStorage:",
+            Array.isArray(admin) ? admin.length : 0,
+          );
+          // Clear products array and populate from localStorage only
+          products.length = 0;
+          if (Array.isArray(admin) && admin.length > 0) {
+            admin.forEach((p, i) => {
+              const id = i + 1;
+              products.push(Object.assign({ id }, p));
+            });
+            console.debug("products array now has", products.length, "items");
+          } else {
+            console.debug("No admin products in localStorage");
+          }
         } catch (e) {
-          console.warn("Failed to load admin products", e);
+          console.warn("Failed to reload admin products", e);
         }
-      })();
+      }
+
+      // Load admin products on page load
+      reloadAdminProducts();
+
+      // Listen for storage changes and reload
+      window.addEventListener("storage", function (e) {
+        console.debug("storage event fired", { key: e.key });
+        reloadAdminProducts();
+        // re-render if DOM is ready
+        try {
+          renderProducts("all");
+        } catch (err) {
+          console.debug("renderProducts not ready yet");
+        }
+      });
 
       const lookbookImages = [
         "icons/download (4).jpg",
@@ -863,18 +825,18 @@
         grid.innerHTML = filtered
           .map(
             (product) => `
-                <div class="product-card group cursor-pointer scroll-reveal" onclick="openModal(₵{product.id})">
+                <div class="product-card group cursor-pointer scroll-reveal" onclick="openModal(${product.id})">
                     <div class="relative overflow-hidden bg-gray-100 aspect-[3/4] mb-4">
-                        <img src="₵{product.image}" alt="₵{product.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         <div class="product-overlay absolute inset-0 bg-black/40 flex items-center justify-center">
                             <button class="bg-white text-black px-6 py-3 font-medium hover:bg-yellow-600 hover:text-white transition-colors">
                                 Quick View
                             </button>
                         </div>
                     </div>
-                    <h3 class="font-display text-xl font-semibold mb-2">₵{product.name}</h3>
-                    <p class="text-gray-600">₵{product.price}</p>
-                    <span class="text-xs text-gray-400 uppercase tracking-wider">₵{product.category}</span>
+                    <h3 class="font-display text-xl font-semibold mb-2">${product.name}</h3>
+                    <p class="text-gray-600">${product.price}</p>
+                    <span class="text-xs text-gray-400 uppercase tracking-wider">${product.category}</span>
                 </div>
             `,
           )
@@ -917,9 +879,9 @@
           .map(
             (img, idx) => `
                 <div class="gallery-item scroll-reveal overflow-hidden group">
-                    <img src="₵{img}" alt="Lookbook ₵{idx + 1}" 
+                    <img src="${img}" alt="Lookbook ${idx + 1}" 
                          class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105 cursor-pointer"
-                         onclick="openLightbox('₵{img}')">
+                         onclick="openLightbox('${img}')">
                 </div>
             `,
           )
@@ -937,7 +899,7 @@
         document.getElementById("modal-title").textContent =
           currentProduct.name;
         document.getElementById("modal-price").textContent =
-          `₵{currentProduct.price}`;
+          `$${currentProduct.price}`;
         document.getElementById("modal-description").textContent =
           currentProduct.description;
 
@@ -945,8 +907,8 @@
         document.getElementById("modal-sizes").innerHTML = currentProduct.sizes
           .map(
             (size, idx) => `
-                <input type="radio" name="size" id="size-₵{idx}" value="₵{size}" class="hidden size-option" onchange="selectedSize = '₵{size}'">
-                <label for="size-₵{idx}" class="w-12 h-12 border border-gray-300 flex items-center justify-center cursor-pointer hover:border-black transition-colors text-sm font-medium">₵{size}</label>
+                <input type="radio" name="size" id="size-${idx}" value="${size}" class="hidden size-option" onchange="selectedSize = '${size}'">
+                <label for="size-${idx}" class="w-12 h-12 border border-gray-300 flex items-center justify-center cursor-pointer hover:border-black transition-colors text-sm font-medium">${size}</label>
             `,
           )
           .join("");
@@ -956,8 +918,8 @@
           currentProduct.colors
             .map(
               (color, idx) => `
-                <input type="radio" name="color" id="color-₵{idx}" value="₵{color}" class="hidden color-option" onchange="selectedColor = '₵{color}'">
-                <label for="color-₵{idx}" class="w-8 h-8 rounded-full cursor-pointer ring-2 ring-offset-2 ring-transparent hover:ring-gray-400 transition-all" style="background-color: ₵{color}"></label>
+                <input type="radio" name="color" id="color-${idx}" value="${color}" class="hidden color-option" onchange="selectedColor = '${color}'">
+                <label for="color-${idx}" class="w-8 h-8 rounded-full cursor-pointer ring-2 ring-offset-2 ring-transparent hover:ring-gray-400 transition-all" style="background-color: ${color}"></label>
             `,
             )
             .join("");
@@ -984,11 +946,11 @@
         const colorName = getColorName(selectedColor);
         const message = `Hi! I'm interested in ordering:
 
-*₵{currentProduct.name}*
-Price: ₵{currentProduct.price}
-Size: ₵{selectedSize}
-Color: ₵{colorName}
-Category: ₵{currentProduct.category}
+*${currentProduct.name}*
+Price: $${currentProduct.price}
+Size: ${selectedSize}
+Color: ${colorName}
+Category: ${currentProduct.category}
 
 Please confirm availability. Thank you!`;
 
@@ -1081,7 +1043,7 @@ Please confirm availability. Thank you!`;
         if (confirm(cartSummary + "\n\nProceed to order all via WhatsApp?")) {
           const message = `Hi! I'd like to order the following items:\n\n${cartSummary}\n\nPlease confirm availability. Thank you!`;
           window.open(
-            `https://wa.me/0536654653?text=₵{encodeURIComponent(message)}`,
+            `https://wa.me/0536654653?text=${encodeURIComponent(message)}`,
             "_blank",
           );
         }
@@ -1141,7 +1103,7 @@ Please confirm availability. Thank you!`;
         lightbox.className =
           "fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4";
         lightbox.innerHTML = `
-                <img src="₵{imgSrc}" class="max-w-full max-h-full object-contain">
+                <img src="${imgSrc}" class="max-w-full max-h-full object-contain">
                 <button onclick="this.parentElement.remove()" class="absolute top-4 right-4 text-white text-2xl">
                     <i class="fas fa-times"></i>
                 </button>
