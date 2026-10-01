@@ -111,7 +111,7 @@ const Store = {
     ],
 
     config: {
-        whatsappNumber: "1234567890", // Replace with actual number
+        whatsappNumber: "233549000504",
         currency: "USD",
         currencySymbol: "$"
     }
